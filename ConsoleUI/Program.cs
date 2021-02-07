@@ -34,7 +34,7 @@ namespace ConsoleUI
             //Console.WriteLine("********Marka Listesi*********");
             //foreach (var brand in brandManager.GetAll())
             //{
-            //    Console.WriteLine("Marka ID : "+brand.BrandId+" Marka Adı : "+brand.BrandName);
+            //    Console.WriteLine("Marka ID : " + brand.BrandId + " Marka Adı : " + brand.BrandName);
             //}
 
             //Console.WriteLine("********Renk Listesi*********");
@@ -60,6 +60,10 @@ namespace ConsoleUI
             //colorManager.Add(color1);
             //colorManager.Update(color1);
             //colorManager.Delete(color1);
+
+            //Color color1 = new Color { ColorId = 5, ColorName = "Pembe" };
+            //colorManager.Delete(color1);
+            
         }
     }
 }
