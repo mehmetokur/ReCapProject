@@ -15,14 +15,52 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
+            UserManager userManager = new UserManager(new EfUserDal());
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            //User user1 = new User
+            //{
+            //    Id = 2,
+            //    FirstName = "Ömer",
+            //    LastName = "selli",
+            //    Email = "ömrslli@gmil.com",
+            //    Password = "123456"
+            //};
+            ////userManager.Add(user1);
+            //userManager.Delete(user1);
+
+            foreach (var user in userManager.GetAll().Data)
+            {
+                Console.WriteLine(user.FirstName);
+            }
+
+            //foreach (var rental in rentalManager.GetAll().Data)
+            //{
+            //    Console.WriteLine(rental.RentDate+" "+rental.CarId+rental.CustomerId);
+            //}
+            //foreach (var customer in customerManager.GetAll().Data)
+            //{
+            //    Console.WriteLine(customer.CompanyName);
+            //}
+
+
+
+
+            //foreach (var user in userManager.GetAll().Data)
+            //{
+            //    Console.WriteLine(user.FirstName + " " + user.LastName);
+            //}
+
+
 
 
             //foreach (var car in carManager.GetCarDetailDtos().Data)
             //{
-            //    Console.WriteLine(car.CarId+" "+car.Description+" "+car.ColorName+" "+car.BrandName+" "+car.DailyPrice);
+            //    Console.WriteLine(car.CarId + " " + car.Description + " " + car.ColorName + " " + car.BrandName + " " + car.DailyPrice);
             //}
 
-            
+
 
 
 
@@ -44,7 +82,7 @@ namespace ConsoleUI
 
             //RenkEkleSilGuncelleTest(colorManager);
 
-            
+
 
         }
 
