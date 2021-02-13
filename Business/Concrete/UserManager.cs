@@ -23,6 +23,7 @@ namespace Business.Concrete
         {
             _userDal.Add(user);
             return new SuccessResult(Messages.UsersAdded);
+            Console.WriteLine(Messages.UsersAdded);
         }
 
         public IResult Delete(User user)

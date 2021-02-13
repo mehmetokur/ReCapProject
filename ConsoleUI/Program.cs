@@ -19,6 +19,25 @@ namespace ConsoleUI
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
+
+            //foreach (var rentaldto in rentalManager.GetRentalDetailDto(1).Data)
+            //{
+            //    Console.WriteLine(rentaldto.UserName+" "+rentaldto.Description+" "+rentaldto.RentDate+" "+rentaldto.ReturnDate);
+            //}
+
+
+
+
+
+
+
+            //userManager.Add(new User { Id = 2, Email = "ömrslli@gmail.com", FirstName = "ömer", LastName = "selli", Password = "123456" });
+            //customerManager.Add(new Customer { Id = 2, UserId = 2, CompanyName = "ömr" });
+            //rentalManager.Add(new Rental { Id = 2, CarId = 2, CustomerId = 2, RentDate = DateTime.Now });
+            //userManager.Add(new User { Id = 3, Email = "ömrsli@gmail.com", FirstName = "ömr", LastName = "slli", Password = "12356" });
+
+
+
             //User user1 = new User
             //{
             //    Id = 2,
@@ -30,10 +49,10 @@ namespace ConsoleUI
             ////userManager.Add(user1);
             //userManager.Delete(user1);
 
-            foreach (var user in userManager.GetAll().Data)
-            {
-                Console.WriteLine(user.FirstName);
-            }
+            //foreach (var user in userManager.GetAll().Data)
+            //{
+            //    Console.WriteLine(user.FirstName);
+            //}
 
             //foreach (var rental in rentalManager.GetAll().Data)
             //{
