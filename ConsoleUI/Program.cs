@@ -20,9 +20,27 @@ namespace ConsoleUI
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
 
+            //foreach (var car in carManager.GetAll().Data)
+            //{
+            //    Console.WriteLine($"\t Id= {car.CarId}, BrandId={car.BrandId}, ColorId={car.ColorId}, ModelYear={car.ModelYear}, Description={car.Description}, DailyPrice={car.DailyPrice}");
+            //}
+            //Console.WriteLine("\n");
+
+
+
+
+
+
+
+
+
+
+
             //foreach (var rentaldto in rentalManager.GetRentalDetailDto(1).Data)
             //{
-            //    Console.WriteLine(rentaldto.UserName+" "+rentaldto.Description+" "+rentaldto.RentDate+" "+rentaldto.ReturnDate);
+            //    Console.WriteLine(rentaldto.UserName + " " + rentaldto.Description + " " + rentaldto.RentDate + " " + rentaldto.ReturnDate);
+            //    Console.WriteLine("Kiralayan"); 
+            //    Console.WriteLine(rentaldto.UserName);
             //}
 
 
