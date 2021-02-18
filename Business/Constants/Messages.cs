@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,6 +13,9 @@ namespace Business.Constants
         public static string CarListed = "Arabalar listelenmiştir";
         public static string CarUpdated = "Araba güncellenmiştir.";
         public static string BrandUpdated = "Model güncellenmiştir.";
+
+      
+
         public static string BrandAdded = "Model Eklenmiştir.";
         public static string BrandDeleted = "Model Silinmiştir.";
 
@@ -23,6 +27,8 @@ namespace Business.Constants
         public static string UsersDeleted = "Kullanıcı silindi ";
         public static string UsersListed = "Kullanıcı listelendi ";
         public static string UserUpdated = "Kullanıcı güncellendi ";
+        
+
         public static string CustomerAdded = "Müşteri eklendi ";
         public static string CustomerDeleted = "Müşteri silindi ";
         public static string CustomerUpdated = "Müşteri güncellendi ";
