@@ -1,28 +1,34 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandsController : ControllerBase
+    public  class ImagesController : ControllerBase
     {
-        IBrandService _brandService;
-public BrandsController(IBrandService brandService)
+        IImageService _ImageService;
+        IWebHostEnvironment _webHostEnvironment;
+
+        public ImagesController(IImageService ımageService,IWebHostEnvironment webHostEnvironment)
         {
-            _brandService = brandService;
+            _ImageService = ımageService;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _brandService.GetAll();
+            var result = _ImageService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -33,7 +39,18 @@ public BrandsController(IBrandService brandService)
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
-            var result = _brandService.GetById(id);
+            var result = _ImageService.Get(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbyımagescarıd")]
+        public IActionResult GetImagesById(int id)
+        {
+            var result = _ImageService.GetByImagesCarId(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -42,20 +59,22 @@ public BrandsController(IBrandService brandService)
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Brand brand)
+        public IActionResult AddAsync([FromForm(Name = ("Image"))] IFormFile file, [FromForm] CarImage carImage)
         {
-            var result = _brandService.Add(brand);
+            var result = _ImageService.Add(file, carImage);
+
             if (result.Success)
             {
                 return Ok(result);
             }
+
             return BadRequest(result);
         }
 
-        [HttpPost("delete")]
-        public IActionResult Delete(Brand brand)
+        [HttpDelete("delete")]
+        public IActionResult Delete(CarImage carImage)
         {
-            var result = _brandService.Delete(brand);
+            var result = _ImageService.Delete(carImage);
             if (result.Success)
             {
                 return Ok(result);
@@ -64,14 +83,16 @@ public BrandsController(IBrandService brandService)
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Brand brand)
+        public IActionResult Update([FromForm(Name = ("Image"))] IFormFile file, [FromForm] CarImage carImage)
         {
-            var result = _brandService.Update(brand);
+            var result = _ImageService.Update(file, carImage);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
+
     }
 }
+
