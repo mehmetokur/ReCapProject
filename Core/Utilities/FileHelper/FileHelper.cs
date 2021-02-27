@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Core.Utilities.Result;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,53 +9,47 @@ namespace Core.Utilities.FileHelper
 {
    public class FileHelper
     {
-        public static string AddAsync(IFormFile file)
+        public static string Add(IFormFile file)
         {
-
             var sourcepath = Path.GetTempFileName();
-            if (file.Length > 0)
+            if (file.FileName !=null)
+            {
                 using (var stream = new FileStream(sourcepath, FileMode.Create))
+                {
                     file.CopyTo(stream);
-
-
+                }
+            }
             var result = newPath(file);
-
             File.Move(sourcepath, result);
-
             return result;
         }
-
-        public static string UpdateAsync(string sourcePath, IFormFile file)
+        public static void Delete(string path)
+        {
+            File.Delete(path);
+        }
+        public static string Update(string sourcePath, IFormFile file)
         {
             var result = newPath(file);
-
-            File.Copy(sourcePath,result);
-
+            if (sourcePath.Length > 0)
+            {
+                using (var stream = new FileStream(result, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+            }
             File.Delete(sourcePath);
-
             return result;
         }
-
         public static string newPath(IFormFile file)
         {
-            System.IO.FileInfo ff = new System.IO.FileInfo(file.FileName);
+            FileInfo ff = new FileInfo(file.FileName);
             string fileExtension = ff.Extension;
 
-            var creatingUniqueFilename = Guid.NewGuid().ToString("D")
-               + "_" + DateTime.Now.Month + "_"
-               + DateTime.Now.Day + "_"
-               + DateTime.Now.Year + fileExtension;
+            string path = Environment.CurrentDirectory + @"\wwwroot\ImagesRepos";
+            var newPath = Guid.NewGuid().ToString() + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Year + fileExtension;
 
-            string path = Path.Combine(Environment.CurrentDirectory+ @"/wwwroot/ImagesRepos");
-
-            string result = $@"{path}\{creatingUniqueFilename}";
-
+            string result = $@"{path}\{newPath}";
             return result;
-        }
-
-        public static string AddAsync(object file)
-        {
-            throw new NotImplementedException();
         }
     }
 }

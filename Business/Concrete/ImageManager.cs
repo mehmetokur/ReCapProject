@@ -24,7 +24,7 @@ namespace Business.Concrete
         {
             _ımageDal = ımageDal;
         }
-        [ValidationAspect(typeof(ImageValidator))]
+        //[ValidationAspect(typeof(ImageValidator))]
         public IResult Add(IFormFile file, CarImage carImage)
         {
             IResult result = BusinessRules.Run(CheckIfImageLimit(carImage.CarId));
@@ -33,13 +33,13 @@ namespace Business.Concrete
             {
                 return result;
             }
-            carImage.ImagePath = FileHelper.AddAsync(file);
+            carImage.ImagePath = FileHelper.Add(file);
             carImage.Date = DateTime.Now;
             _ımageDal.Add(carImage);
             return new SuccessResult();
         }
 
-        [ValidationAspect(typeof(ImageValidator))]
+        
         public IResult Delete(CarImage carImage)
         {
             IResult result = BusinessRules.Run(CarImageDelete(carImage));
@@ -72,7 +72,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(ImageValidator))]
         public IResult Update(IFormFile file, CarImage carImage)
         {
-            carImage.ImagePath = FileHelper.UpdateAsync(_ımageDal.Get(p => p.Id == carImage.Id).ImagePath, file);
+            carImage.ImagePath = FileHelper.Update(_ımageDal.Get(p => p.Id == carImage.Id).ImagePath, file);
             carImage.Date = DateTime.Now;
 
             _ımageDal.Update(carImage);
