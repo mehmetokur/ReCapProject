@@ -36,21 +36,23 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => {
+                .AddJwtBearer(options =>
+                {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
-                        ValidateAudience=true,
-                        ValidateLifetime= true,
-                        ValidIssuer= tokenOptions.Issuer,
-                        ValidAudience=tokenOptions.Audience,
-                        ValidateIssuerSigningKey= true,
-                        IssuerSigningKey=SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
-
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidIssuer = tokenOptions.Issuer,
+                        ValidAudience = tokenOptions.Audience,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
             ServiceTool.Create(services);
@@ -89,9 +91,11 @@ namespace WebAPI
 
             app.UseStaticFiles();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
-            app.UseAuthentication();
+           
 
             app.UseEndpoints(endpoints =>
             {

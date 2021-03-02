@@ -9,7 +9,7 @@ using Core.Extensions;
 
 namespace Business.BusinessAspect.Autofac
 {
-    public class SecuredOperation: MethodInterception
+    public class SecuredOperation : MethodInterception
     {
         private string[] _roles;
         private IHttpContextAccessor _httpContextAccessor;
@@ -18,6 +18,7 @@ namespace Business.BusinessAspect.Autofac
         {
             _roles = roles.Split(',');
             _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
+
         }
 
         protected override void OnBefore(IInvocation invocation)
@@ -30,7 +31,6 @@ namespace Business.BusinessAspect.Autofac
                     return;
                 }
             }
-
             throw new Exception(Messages.AuthorizationDenied);
         }
     }

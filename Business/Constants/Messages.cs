@@ -52,7 +52,7 @@ namespace Business.Constants
         internal static string CarImageGetAll;
         public static string UserNotFound="Kullanıcı bulunamadı";
         public static string PasswordError="Şifre hatalı";
-        public static string SuccesfulLogin="Giriş başarılı";
+        public static string SuccessfulLogin="Giriş başarılı";
         public static string UserAlreadyExists="Bu kullanıcı zaten mevcut";
         public static string UserRegistered="Kullanıcı başarıyla kaydedildi.";
         public static string AccessTokenCreated ="Access token başarıyla oluşturuldu";

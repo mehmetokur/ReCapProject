@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Core.Utilities.IoC
 {
-   public class ServiceTool
+    public static class ServiceTool
     {
         public static IServiceProvider ServiceProvider { get; private set; }
 
