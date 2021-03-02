@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.DTOs;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller])")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class AuthController:Controller
+    public class AuthController : ControllerBase
     {
-        IAuthService _authService;
+        private IAuthService _authService;
 
         public AuthController(IAuthService authService)
         {
@@ -27,11 +28,13 @@ namespace WebAPI.Controllers
             {
                 return BadRequest(userToLogin.Message);
             }
-           var result= _authService.CreateAccessToken(userToLogin.Data);
+
+            var result = _authService.CreateAccessToken(userToLogin.Data);
             if (result.Success)
             {
                 return Ok(result.Data);
             }
+
             return BadRequest(result.Message);
         }
 
@@ -43,13 +46,15 @@ namespace WebAPI.Controllers
             {
                 return BadRequest(userExists.Message);
             }
-            var registerResult = _authService.Register(userForRegisterDto,userForRegisterDto.Password);
+
+            var registerResult = _authService.Register(userForRegisterDto, userForRegisterDto.Password);
             var result = _authService.CreateAccessToken(registerResult.Data);
             if (result.Success)
             {
                 return Ok(result.Data);
             }
+
             return BadRequest(result.Message);
         }
-     }
+    }
 }
