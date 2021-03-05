@@ -14,10 +14,9 @@ namespace Business.Constants
         public static string CarDeletedSuccess = "Araba silinmiştir.";
         public static string CarListed = "Arabalar listelenmiştir";
         public static string CarUpdated = "Araba güncellenmiştir.";
+
+
         public static string BrandUpdated = "Model güncellenmiştir.";
-
-      
-
         public static string BrandAdded = "Model Eklenmiştir.";
         public static string BrandDeleted = "Model Silinmiştir.";
 
@@ -34,22 +33,14 @@ namespace Business.Constants
         public static string CustomerAdded = "Müşteri eklendi ";
         public static string CustomerDeleted = "Müşteri silindi ";
         public static string CustomerUpdated = "Müşteri güncellendi ";
+
         public static string RentalAdded = "Kiralama eklendi ";
         public static string RentalNotAdded = "Araç kirada ";
         public static string RentalDeleted = "Kiralama silindi ";
         public static string RentalListed = "Kiralama listelendi ";
         public static string RentalUpdated = "Kiralama güncellendi ";
-        internal static string TheNumberOfImagesUploadedHasExceeded;
-        internal static string ErrorDeleted;
-        internal static string SuccessDeleted;
-        internal static string SuccessListed;
-        internal static string SuccessAdded;
+
         public static string FailAddedImageLimit="Fotograf limit aşıldı";
-        internal static string ImageUpdated;
-        internal static string ImageLimit;
-        internal static string DesiredListed;
-        internal static string CarImageListed;
-        internal static string CarImageGetAll;
         public static string UserNotFound="Kullanıcı bulunamadı";
         public static string PasswordError="Şifre hatalı";
         public static string SuccessfulLogin="Giriş başarılı";
@@ -57,5 +48,9 @@ namespace Business.Constants
         public static string UserRegistered="Kullanıcı başarıyla kaydedildi.";
         public static string AccessTokenCreated ="Access token başarıyla oluşturuldu";
         public static string AuthorizationDenied="Yetkiniz yok";
+        public static string DesiredListed="Listelendi";
+        public static string CarImageGetAll="Listelendi";
+        public static string CarImageListed="Listelendi";
+        public static string ImageLimit = "Resim limiti Aşıldı";
     }
 }
